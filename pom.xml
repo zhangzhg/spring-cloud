@@ -102,7 +102,15 @@
 				<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 				<version>${eureka.client.version}</version>
 			</dependency>
-        </dependencies>
+			<!--没有指定版本eureka-client编译的时候会出现警告-->
+			<dependency>
+				<groupId>com.netflix.eureka</groupId>
+				<artifactId>eureka-core</artifactId>
+				<version>1.9.8</version>
+				<scope>runtime</scope>
+			</dependency>
+
+		</dependencies>
     </dependencyManagement>
 
 	<build>

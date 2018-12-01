@@ -16,7 +16,6 @@ public class AuthApplication {
 		SpringApplication.run(AuthApplication.class, args);
 	}
 
-
 	@Bean
 	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
 		return builder.routes()
