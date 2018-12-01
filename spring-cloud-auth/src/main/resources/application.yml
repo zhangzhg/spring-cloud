@@ -1,0 +1,26 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: auth
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+        routes:
+        - id: service_to_producer
+          uri: lb://aaaa
+          order: 8000
+          predicates:
+          - Path=/producer/**
+          filters:
+            - StripPrefix=1
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+management:
+  security:
+    enabled: false
