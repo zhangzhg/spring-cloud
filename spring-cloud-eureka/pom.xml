@@ -13,16 +13,16 @@
 
 
 	<properties>
-		<eureka.version>1.4.6.RELEASE</eureka.version>
+		<eureka.version>2.0.2.RELEASE</eureka.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 			<version>${eureka.version}</version>
 		</dependency>
-    </dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>

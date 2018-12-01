@@ -36,6 +36,7 @@
 		<jpa.version>2.1.1.RELEASE</jpa.version>
 		<slf4j.version>1.7.25</slf4j.version>
 		<gateway.version>2.0.0.RELEASE</gateway.version>
+		<eureka.client.version>2.0.2.RELEASE</eureka.client.version>
 	</properties>
 
     <dependencies>
@@ -95,6 +96,11 @@
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-log4j12</artifactId>
 				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+				<version>${eureka.client.version}</version>
 			</dependency>
         </dependencies>
     </dependencyManagement>

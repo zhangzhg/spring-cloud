@@ -13,7 +13,6 @@
 
 	<properties>
 		<admin.server.version>2.1.1</admin.server.version>
-		<eureka.version>1.4.6.RELEASE</eureka.version>
 		<actuator.version>2.1.0.RELEASE</actuator.version>
 	</properties>
 
@@ -26,7 +25,7 @@
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 
 		<dependency>
