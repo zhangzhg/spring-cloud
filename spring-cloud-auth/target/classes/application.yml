@@ -17,18 +17,18 @@ spring:
 #      time-between-eviction-runs-millis: 18800
 #    tomcat:
 #      jdbc-interceptors: ConnectionState;SlowQueryReport(threshold=50)
-#  redis:
-#    database: 0
-#    host: localhost
-#    password:
-#    timeout: 3000
-#    port: 6379
-#    jedis:
-#      pool:
-#        max-active: 5
-#        min-idle: 0
-#        max-wait: 1
-#        max-idle: 8
+  redis:
+    database: 0
+    host: localhost
+    password:
+    timeout: 3000
+    port: 6379
+    jedis:
+      pool:
+        max-active: 5
+        min-idle: 0
+        max-wait: 1
+        max-idle: 8
   cloud:
     gateway:
       discovery:
@@ -36,10 +36,16 @@ spring:
           enabled: true
           lowerCaseServiceId: true
       routes:
-      - id: 163 #网关路由到网易官网
+      - id: login-${server.port}
         uri: http://www.163.com/
         predicates:
         - Path=/login/**
+      - id: static-${server.port}
+        uri: http://zhangzhg.oss-cn-hangzhou.aliyuncs.com/**
+        predicates:
+        - Path=/static/**
+        filters:
+        - StripPrefix= 1
 eureka:
   instance:
     prefer-ip-address: true

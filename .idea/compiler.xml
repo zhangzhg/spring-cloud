@@ -23,7 +23,6 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="framework.auth" />
-        <module name="spring-boot-admin-server" />
         <module name="spring-cloud-auth" />
         <module name="spring-cloud-eureka" />
         <module name="spring-cloud-producer" />

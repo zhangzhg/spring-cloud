@@ -1,1 +1,2 @@
 com\normal\auth\AuthApplication.class
+com\normal\auth\filter\AuthFilter.class
