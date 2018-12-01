@@ -1,0 +1,49 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: auth
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+      - id: 163 #网关路由到网易官网
+        uri: http://www.163.com/
+        predicates:
+        - Path=/login/**
+ribbon:
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 0
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+default:
+  execution:
+    isolation:
+      thread:
+        timeoutInMilliseconds: 60000
+auth:
+  permitall:
+    - pattern: /login/**
+    - pattern: /**/public/**
+security:
+  oauth2:
+    client:
+      access-token-uri: /oauth/token
+      user-authorization-uri: /oauth/authorize
+      client-id: frontend
+      client-secret: frontend
+    resource:
+      user-info-uri: /userinfo
+      token-info-uri: /oauth/check_token
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+management:
+  security:
+    enabled: false
