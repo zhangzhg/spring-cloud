@@ -61,7 +61,7 @@ logging:
     reactor.netty: DEBUG
 
 security:
-  user: zzg123456
+  # ignored: /,/favicon.ico,/index.html,/home.html,/dashboard.html,/js/**,/css/**,/webjars/**
   oauth2:
     sso:
       loginPath: /login   # 登录路径

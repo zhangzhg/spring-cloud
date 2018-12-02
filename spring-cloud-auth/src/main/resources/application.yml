@@ -42,7 +42,6 @@ spring:
         - Path=/static/**
         filters:
         - StripPrefix= 1
-
 eureka:
   instance:
     prefer-ip-address: true
@@ -61,6 +60,7 @@ logging:
     reactor.netty: DEBUG
 
 security:
+  # ignored: /,/favicon.ico,/index.html,/home.html,/dashboard.html,/js/**,/css/**,/webjars/**
   oauth2:
     sso:
       loginPath: /login   # 登录路径
