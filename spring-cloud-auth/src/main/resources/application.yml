@@ -42,6 +42,7 @@ spring:
         - Path=/static/**
         filters:
         - StripPrefix= 1
+
 eureka:
   instance:
     prefer-ip-address: true
