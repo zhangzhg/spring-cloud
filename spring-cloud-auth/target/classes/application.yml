@@ -36,16 +36,13 @@ spring:
           enabled: true
           lowerCaseServiceId: true
       routes:
-      - id: login-${server.port}
-        uri: http://www.163.com/
-        predicates:
-        - Path=/login/**
       - id: static-${server.port}
-        uri: http://zhangzhg.oss-cn-hangzhou.aliyuncs.com/**
+        uri: http://zhangzhg.oss-cn-hangzhou.aliyuncs.com/
         predicates:
         - Path=/static/**
         filters:
         - StripPrefix= 1
+
 eureka:
   instance:
     prefer-ip-address: true
@@ -55,3 +52,24 @@ eureka:
 management:
   security:
     enabled: false
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG
+    reactor.netty: DEBUG
+
+security:
+  user: zzg123456
+  oauth2:
+    sso:
+      loginPath: /login   # 登录路径
+    client:
+      clientId: 430a12f4a52a5eeba8dc
+      clientSecret: b4c5abd9362cf058ea2cb4275fee752ecfde02cc
+      accessTokenUri: https://github.com/login/oauth/access_token
+      userAuthorizationUri: https://github.com/login/oauth/authorize
+    resource:
+      userInfoUri: https://api.github.com/user
+      preferTokenInfo: false
