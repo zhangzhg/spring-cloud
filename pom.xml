@@ -8,9 +8,11 @@
 	<version>1.0.0-SNAPSHOT</version>
 
 	<modules>
-		<module>spring-cloud-eureka</module>
-		<module>spring-cloud-auth</module>
-		<module>spring-cloud-producer</module>
+		<module>config-server</module>
+		<module>eureka-server</module>
+		<module>cloud-gateway</module>
+		<module>order-service</module>
+		<module>auth-service</module>
 	</modules>
 
 	<packaging>pom</packaging>
@@ -79,11 +81,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-data-jpa</artifactId>
 				<version>${jpa.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-starter-gateway</artifactId>
-				<version>${gateway.version}</version>
 			</dependency>
 			<!-- slf4j -->
 			<dependency>

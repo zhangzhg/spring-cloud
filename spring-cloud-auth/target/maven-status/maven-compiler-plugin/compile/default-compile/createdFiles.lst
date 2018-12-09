@@ -1,3 +1,0 @@
-com\normal\auth\AuthApplication.class
-com\normal\auth\config\SecurityConfiguration.class
-com\normal\auth\filter\AuthFilter.class

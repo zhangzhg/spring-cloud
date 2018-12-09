@@ -1,0 +1,4 @@
+com\cloud\GatewayApplication.class
+com\cloud\config\OAuthConfiguration.class
+com\cloud\fallbacks\ServiceFallbackProvider$1.class
+com\cloud\fallbacks\ServiceFallbackProvider.class
