@@ -90,6 +90,7 @@
     2.设置注册中心，会自动监听：@EnableDiscoveryClient
     
 ### String Auth2 使用
+    Authorization:Basic d2ViYXBwOnNlY3JldA==
     获取token： http://localhost:8080/uaa/oauth/token?grant_type=password&username=zzg&password=admin
     请求： http://localhost:9000/hello?name=xx&access_token=94d0ef5e-cea8-4f32-96b0-5417d8cad911
     
