@@ -9,11 +9,6 @@
 * 启动注册中心，@EnableEurekaServer即可。
 * 注册服务到注册中心，引入spring-cloud-starter-netflix-eureka-server或者spring-cloud-starter-eureka。
 * 新版的将使用第一个，第二个包已经不包含在spring-cloud-dependencies里面了。
-### Consul 的使用原因
-* 此框架选择使用Consul，不用Eureka。原因：
->    1.Eureka没有service-name配置。而配置content-path会导致Feign路由找不到的问题。
-     2.而在所有的Feign前面增加content-path不优雅。
-     3.如果不增加content-path的话，在Spring Cloud Gateway中不好判断每个url属于哪个系统。极大影响了系统的扩展功能，和灵活性。
 ### Consul 的使用  
 * 安装 
 >    1.下载路径：https://www.consul.io/downloads.html
