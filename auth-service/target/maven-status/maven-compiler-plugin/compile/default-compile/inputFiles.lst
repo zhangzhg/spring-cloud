@@ -16,6 +16,5 @@ D:\workspace\spring-cloud\auth-service\src\main\java\com\cloud\config\Authorizat
 D:\workspace\spring-cloud\auth-service\src\main\java\com\cloud\domain\AbstractAuditingEntity.java
 D:\workspace\spring-cloud\auth-service\src\main\java\com\cloud\controller\UserController.java
 D:\workspace\spring-cloud\auth-service\src\main\java\com\cloud\security\SecurityUtils.java
-D:\workspace\spring-cloud\auth-service\src\main\java\com\cloud\util\Constants.java
 D:\workspace\spring-cloud\auth-service\src\main\java\com\cloud\domain\SysAuthority.java
 D:\workspace\spring-cloud\auth-service\src\main\java\com\cloud\repository\SysRoleRepository.java

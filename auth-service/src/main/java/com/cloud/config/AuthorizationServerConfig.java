@@ -3,6 +3,7 @@ package com.cloud.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -21,7 +22,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Resource(name = "userDetailsService")
+    @Autowired
     private UserDetailsService userDetailsService;
 
 
@@ -35,14 +36,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         endpoints
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService)//若无，refresh_token会有UserDetailsService is required错误
+                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
                 .tokenStore(tokenStore());
     }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.tokenKeyAccess("permitAll()")
-                //.checkTokenAccess("isAuthenticated()")
-                .checkTokenAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()")
                 .allowFormAuthenticationForClients();
     }
 
@@ -57,9 +58,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         // client_type=webapp&grant_type=password
         clients.inMemory()
                 .withClient("webapp").secret("secret")
+                .redirectUris("http://localhost:9000/")
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token")
                 .scopes(SCOPE_READ, SCOPE_WRITE, TRUST)
                 .accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS).
                 refreshTokenValiditySeconds(FREFRESH_TOKEN_VALIDITY_SECONDS);
+//                .and()
+//                .withClient("webapp")
+//                .authorizedGrantTypes("implicit");
     }
 }

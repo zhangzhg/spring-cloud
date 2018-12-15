@@ -9,10 +9,6 @@ spring:
     username: root
     password: root
 
-logging:
-  level:
-    org.springframework.cloud.netflix.zuul: TRACE
-
 zuul:
   routes:
     uaa:
@@ -35,8 +31,12 @@ security:
     client:
       accessTokenUri: http://localhost:8080/uaa/oauth/token
       userAuthorizationUri: http://localhost:8080/uaa/oauth/authorize
-      clientId: webapp
-      clientSecret: secret
+#      clientId: webapp
+#      clientSecret: secret
+      registration:
+        uaa:
+          client-id: webapp
+          client-secret: secret
     resource:
       userInfoUri: http://localhost:8080/uaa/user
       preferTokenInfo: false
