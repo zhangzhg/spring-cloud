@@ -33,7 +33,7 @@ public class AuthController {
      */
     @GetMapping("/require")
     public ModelAndView require() {
-        return new ModelAndView("/ftl/login");
+        return new ModelAndView("/templates/ftl/login");
     }
 
     /**

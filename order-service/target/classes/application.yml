@@ -1,8 +1,10 @@
 server:
   port: 9000
+  servlet:
+      context-path: /order
 spring:
   application:
-    name: order-service
+    name: order
 eureka:
   client:
     serviceUrl:
@@ -14,7 +16,7 @@ management:
 security:
   oauth2:
     resource:
-      id: order-service
+      id: order
       user-info-uri: http://localhost:8080/uaa/user
       prefer-token-info: false
 

@@ -15,10 +15,6 @@ zuul:
       path: /uaa/**
       sensitiveHeaders:
       serviceId: auth-server
-    order:
-      path: /order/**
-      sensitiveHeaders:
-      serviceId: order-service
   add-proxy-headers: true
 eureka:
   client:

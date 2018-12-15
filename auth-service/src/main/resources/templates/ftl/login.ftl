@@ -10,13 +10,13 @@
 
     <title>微服务统一认证</title>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/signin.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/signin.css" rel="stylesheet">
   </head>
 
   <body>
     <div class="container form-margin-top">
-      <form class="form-signin" action="/uaa/authentication/form" method="post">
+      <form class="form-signin" action="/authentication/form" method="post">
         <h2 class="form-signin-heading" align="center">统一认证系统</h2>
         <input type="text" name="username" class="form-control form-margin-top" placeholder="账号" required autofocus>
         <input type="password" name="password" class="form-control" placeholder="密码" required>
