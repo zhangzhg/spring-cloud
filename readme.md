@@ -94,5 +94,9 @@
     获取token： http://localhost:8080/uaa/oauth/token?grant_type=password&username=zzg&password=admin
     请求： http://localhost:9000/hello?name=xx&access_token=94d0ef5e-cea8-4f32-96b0-5417d8cad911
     
-
+### zuul 动态路由配置
+    1、达到动态刷新的目的
+    2、存储在db（可以db、zk、redis）
+    3、刷新路由：http://localhost:8080/refreshRoute
+    
 
