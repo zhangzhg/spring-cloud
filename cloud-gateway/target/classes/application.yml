@@ -4,8 +4,12 @@ server:
 spring:
   application:
     name: cloud-gateway
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
   datasource:
-    url: jdbc:mysql://localhost:33306/demo?useSSL=false
+    url: jdbc:mysql://localhost:3306/demo?useSSL=false
     username: root
     password: root
 
