@@ -23,10 +23,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private DomainUserDetailsService userDetailsService;
 
     public void configure(HttpSecurity http) throws Exception {
-//        ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry =
-//                http.formLogin().loginPage("/oauth/require").permitAll()
-//                        .loginProcessingUrl("/authentication/form").permitAll()
-//                        .and()
         http.authorizeRequests()
                         .antMatchers("/oauth/**", "/api-docs/**")
                         .permitAll()

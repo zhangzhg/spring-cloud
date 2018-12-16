@@ -58,7 +58,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         // client_type=webapp&grant_type=password
         clients.inMemory()
                 .withClient("webapp").secret("secret")
-                .redirectUris("http://localhost:9000/")
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token")
                 .scopes(SCOPE_READ, SCOPE_WRITE, TRUST)
                 .accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS).
