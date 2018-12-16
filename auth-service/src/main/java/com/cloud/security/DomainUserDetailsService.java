@@ -32,7 +32,6 @@ public class DomainUserDetailsService implements UserDetailsService {
 
         return realUser.map(user -> {
             Set<GrantedAuthority> grantedAuthorities = user.getAuthorities();
-            log.info("============================map user  "+user.getUsername());
             return new User(user.getUsername(),user.getPassword(),grantedAuthorities);
         }).orElseThrow(() -> new UsernameNotFoundException("用户" + lowcaseUsername + "不存在!"));
     }

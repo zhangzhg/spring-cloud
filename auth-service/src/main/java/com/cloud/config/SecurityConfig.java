@@ -11,12 +11,16 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+/**
+ * 这个是spring security的类
+ */
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
@@ -56,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // 禁止隐藏用户未找到异常
         provider.setHideUserNotFoundExceptions(false);
         // 使用BCrypt进行密码的hash
-        provider.setPasswordEncoder(passwordEncoder());
+        provider.setPasswordEncoder(new BCryptPasswordEncoder());
         return provider;
     }
 
@@ -80,32 +84,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new SecurityEvaluationContextExtension();
     }
 
-    //不定义没有password grant_type
+    /**
+     * 这个是spring security
+     */
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
-    /**
-     * 加这个是因为spring升级版本后的密码验证格式发生了变化要： {}secret
-     * 直接这样就不会出问题，否则报错
-     */
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new PasswordEncoder() {
-
-            @Override
-            public boolean matches(CharSequence rawPassword, String encodedPassword) {
-                System.out.println("PasswordEncoder:  raw password:" + rawPassword.toString() + " encoded:" + encodedPassword);
-                return true;
-            }
-
-            @Override
-            public String encode(CharSequence rawPassword) {
-                System.out.println("PasswordEncoder: raw password:" + rawPassword.toString());
-                return rawPassword.toString();
-            }
-        };
-    }
 }

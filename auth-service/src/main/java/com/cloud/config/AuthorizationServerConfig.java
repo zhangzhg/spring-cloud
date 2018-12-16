@@ -35,7 +35,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 .authenticationManager(authenticationManager)
-                .userDetailsService(userDetailsService)//若无，refresh_token会有UserDetailsService is required错误
+                .userDetailsService(userDetailsService)
                 .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
                 .tokenStore(tokenStore());
     }
@@ -57,7 +57,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         // client_type=webapp&grant_type=password
         clients.inMemory()
-                .withClient("webapp").secret("secret")
+                .withClient("webapp")
+                // 如果使用 BCryptPasswordEncoder 加密方式，这里一定要这样{bcrypt}+密文。spring固定了。
+                .secret("{bcrypt}$2a$10$1agp7vJOGqTvIRtkmABgteLtKEX3f1SP9A9R2ADVud5.OkIxQSEUS")
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token")
                 .scopes(SCOPE_READ, SCOPE_WRITE, TRUST)
                 .accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS).
