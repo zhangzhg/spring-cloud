@@ -17,20 +17,21 @@ spring:
 server:
   port: 9999
 
-
 eureka:
   client:
     serviceUrl:
       defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/
 
-
-
-logging.level.org.springframework.security: DEBUG
-
-logging.leve.org.springframework: DEBUG
-
-
 security:
   oauth2:
     resource:
       filter-order: 3
+
+ignore:
+  urls:
+   - /uaa/**
+   - /swagger-resources/**
+   - /swagger-ui.html
+   - /*/v2/api-docs
+   - /swagger/api-docs
+   - /webjars/**

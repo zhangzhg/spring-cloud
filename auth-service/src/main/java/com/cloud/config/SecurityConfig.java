@@ -28,15 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                        .antMatchers("/oauth/**", "/api-docs/**")
-                        .permitAll()
-                .and()
-                .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/oauth/require")
-                .permitAll();
+                        .antMatchers("/oauth/**")
+                        .permitAll();
     }
 
     /**
