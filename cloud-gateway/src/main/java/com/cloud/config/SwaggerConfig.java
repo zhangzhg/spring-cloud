@@ -46,8 +46,8 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("Swagger API ")
                 .description("spring cloud project")
-                .termsOfServiceUrl("https://gitee.com/log4j/pig")
-                .contact(new Contact("API","https://localhost:8080","non@163.com"))
+                .termsOfServiceUrl("https://gitee.com/log4j/")
+                .contact(new Contact("API","http://localhost:8080/swagger-ui.html#/","non@163.com"))
                 .version("1.0")
                 .build();
     }
