@@ -1,14 +1,14 @@
 package com.cloud.feign.fallback;
 
-import com.cloud.feign.IUserService;
+import com.cloud.feign.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 
-@Service
-public class UserServiceFallback implements IUserService {
+//@Service
+public class UserServiceFallback implements UserService {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Override

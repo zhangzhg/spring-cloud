@@ -1,11 +1,10 @@
 package com.cloud.controller;
 
-import com.cloud.feign.IUserService;
+import com.cloud.feign.UserService;
 import com.cloud.service.IHelloService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +17,7 @@ public class HelloController {
     @Autowired
     IHelloService helloService;
     @Autowired
-    IUserService userService;
+    UserService userService;
 
     @RequestMapping("/hello")
     //@PreAuthorize("hasAuthority('hello')")
