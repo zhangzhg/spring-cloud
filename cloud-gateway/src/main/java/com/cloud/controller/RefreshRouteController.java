@@ -17,7 +17,7 @@ public class RefreshRouteController {
     IRefreshRouteService refreshRouteService;
 
     @GetMapping("/refreshRoute")
-    @ApiOperation(value="刷新路由", httpMethod="get", notes="数据路由")
+    @ApiOperation(value="刷新路由", httpMethod="GET", notes="数据路由")
     private void findById() {
         refreshRouteService.refresh();
     }

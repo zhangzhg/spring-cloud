@@ -28,7 +28,7 @@ public class HelloController {
 
     @RequestMapping("/user")
     public String user() {
-        Principal user = userService.getUser();
-        return user.getName();
+        String name = userService.getHello("测试client");
+        return name;
     }
 }

@@ -1,4 +1,8 @@
 ## 本框架搭建时间为12月1日，所有的包都是最新的。技术为目前最主流的技术。
+* http://localhost:8080/swagger-ui.html 接口查看
+* http://localhost:8761/ 
+* http://localhost:8081/zipkin 微服务跟踪，能够查看用户所有的操作
+* http://localhost:8080/hystrix 熔断
 ### spring boot admin 监控
 * 正常情况下，由server端和被监听的client端组成。
 * spring cloud下其实是监听Eureka，所以client端为Eureka。
@@ -163,9 +167,10 @@ public interface HelloService {
 ```
 
 * 以上所有的熔断功能以及被集成到spring-cloud-starter-netflix-zuul中。
-启动测试：http://localhost:8080//hystrix.stream
+启动测试：http://localhost:8080/hystrix
 
 ### feign client 和 auth2
 * 要权限验证feign有2种方式
 > 1、参数方式验证，在params 里面增加一个access_token
 > 2、Bearer token方式验证，在header 里面增加Authorization值为Bearer空格+access_token
+* 返回结果必须为可序列化对象，否则报错。

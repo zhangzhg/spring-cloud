@@ -26,12 +26,14 @@
         <module name="cloud-common" />
         <module name="cloud-gateway" />
         <module name="config-server" />
+        <module name="config-server (1)" />
         <module name="eureka-server" />
         <module name="framework.auth" />
         <module name="order-service" />
         <module name="spring-cloud-eureka" />
         <module name="spring-cloud-gateway" />
         <module name="spring-cloud-producer" />
+        <module name="zipkin-server" />
       </profile>
       <profile default="false" name="Annotation profile for Spring Cloud" enabled="true">
         <sourceOutputDir name="../order-service/target/generated-sources/annotations" />
@@ -46,6 +48,7 @@
       <module name="cloud-common" target="1.8" />
       <module name="cloud-gateway" target="1.8" />
       <module name="config-server" target="1.8" />
+      <module name="config-server (1)" target="1.8" />
       <module name="eureka-server" target="1.8" />
       <module name="framework-parent" target="1.8" />
       <module name="framework.auth" target="1.5" />
@@ -57,6 +60,7 @@
       <module name="spring-cloud-eureka" target="1.8" />
       <module name="spring-cloud-gateway" target="1.8" />
       <module name="spring-cloud-producer" target="1.8" />
+      <module name="zipkin-server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
