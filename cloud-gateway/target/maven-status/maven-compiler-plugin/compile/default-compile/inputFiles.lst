@@ -1,6 +1,0 @@
-D:\workspace\spring-cloud\cloud-gateway\src\main\java\com\cloud\GatewayApplication.java
-D:\workspace\spring-cloud\cloud-gateway\src\main\java\com\cloud\config\SwaggerConfig.java
-D:\workspace\spring-cloud\cloud-gateway\src\main\java\com\cloud\config\OAuthConfiguration.java
-D:\workspace\spring-cloud\cloud-gateway\src\main\java\com\cloud\controller\UserController.java
-D:\workspace\spring-cloud\cloud-gateway\src\main\java\com\cloud\controller\AuthenticationController.java
-D:\workspace\spring-cloud\cloud-gateway\src\main\java\com\cloud\fallbacks\ServiceFallbackProvider.java

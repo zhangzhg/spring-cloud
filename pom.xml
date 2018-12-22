@@ -39,6 +39,8 @@
 		<slf4j.version>1.7.25</slf4j.version>
 		<gateway.version>2.0.0.RELEASE</gateway.version>
 		<eureka.client.version>2.0.2.RELEASE</eureka.client.version>
+		<common.beanutils.version>1.9.3</common.beanutils.version>
+		<common.io.version>2.6</common.io.version>
 	</properties>
 
     <dependencies>
@@ -98,6 +100,16 @@
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 				<version>${eureka.client.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>${common.beanutils.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${common.io.version}</version>
 			</dependency>
 		</dependencies>
     </dependencyManagement>

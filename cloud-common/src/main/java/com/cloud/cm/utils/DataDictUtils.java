@@ -4,7 +4,6 @@ import java.lang.reflect.Method;
 
 /**
  * 数字字典工具类
- * Created by KQY on 2015/4/16.
  */
 public class DataDictUtils {
 
@@ -39,7 +38,7 @@ public class DataDictUtils {
     public static <T extends Enum> String getDataDictNameByCode(Class<T> clz, String code) {
         String name = null;
         if(StringUtils.isEmpty(code)){
-            return name;
+            return null;
         }
         T dataDict = getDataDictByCode(clz, code);
         if (dataDict != null) {

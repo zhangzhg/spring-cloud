@@ -11,6 +11,9 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * zuul降级异常统一处理
+ */
 @Component
 public class ServiceFallbackProvider implements FallbackProvider {
     @Override
@@ -44,7 +47,12 @@ public class ServiceFallbackProvider implements FallbackProvider {
 
             @Override
             public InputStream getBody() throws IOException {
-                return new ByteArrayInputStream("服务故障，请稍后重试!".getBytes());
+                StringBuilder builder = new StringBuilder("服务故障，请稍后重试!\n")
+                        .append("[")
+                        .append(route)
+                        .append("]:\n")
+                        .append(cause.getMessage());
+                return new ByteArrayInputStream(builder.toString().getBytes());
             }
 
             @Override

@@ -99,4 +99,69 @@
     2、存储在db（可以db、zk、redis）
     3、刷新路由：http://localhost:8080/refreshRoute
     
+### Hystrix 熔断器，包含在包netflix中
+    1、首先检查缓存中是否有结果。如果有则直接返回缓存结果。
+    2、判断断路器是否开启，如果断路器闭合，执行降级业务逻辑并返回降级结果。
+    3、判断信号量/线程池资源是否饱和，如饱和则执行降级业务逻辑并返回降级结果。
+    4、调用实际服务，如发生异常，执行降级业务逻辑并返回降级结果，并调整断路器阈值。
+    5、判断实际业务是否超时，超时则返回超时响应结果，并调整断路器阈值。
+* 引入
+```
+<dependency>
+     <groupId>org.springframework.cloud</groupId>
+     <artifactId>spring-cloud-starter-hystrix</artifactId>
+ </dependency>
+ <!--界面-->
+ <dependency>
+     <groupId>org.springframework.cloud</groupId>
+     <artifactId>spring-cloud-starter-hystrix-dashboard             </artifactId>
+ </dependency>
+```
+* 增加注解@EnableCircuitBreaker
+
+* 单独使用
+```
+// HystrixCommand里面可以设置各种属性， 包含请求时间，失败率，请求数等
+@HystrixCommand(fallbackMethod = "helloServiceFallBack")
+public String helloService(String name) {
+}
+```
+* Feign结合
+```
+@FeignClient(name="order", fallback = HelloServiceFallback.class)
+public interface HelloService {
+  @RequestMapping(value = "/user/timeout", method = RequestMethod.GET)
+  String helloService(String name);
+}
+```
+### Hystrix Turbine聚合Hystrix stream信息
+* 新建项目引入依赖
+```
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-turbine</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-netflix-turbine</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+* 增加注解：@EnableTurbine
+```
+    # 指定聚合哪些集群，多个使用","分割，默认为default。可使用http://.../turbine.stream?cluster={clusterConfig之一}访问
+    turbine.aggregator.clusterConfig=default
+    # 配置Eureka中的serviceId列表，表明监控哪些服务
+    turbine.appConfig=hystrixClient1,hystrixClient2,hystrixClient3
+    turbine.clusterNameExpression=new String("default")
+    # 1. clusterNameExpression指定集群名称，默认表达式appName；此时：turbine.aggregator.clusterConfig需要配置想要监控的应用名称
+    # 2. 当clusterNameExpression: default时，turbine.aggregator.clusterConfig可以不写，因为默认就是default
+    # 3. 当clusterNameExpression: metadata['cluster']时，假设想要监控的应用配置了eureka.instance.metadata-map.cluster: ABC，则需要配置，同时turbine.aggregator.clusterConfig: ABC
+```
+
+* 以上所有的熔断功能以及被集成到spring-cloud-starter-netflix-zuul中。
+启动测试：http://localhost:8080//hystrix.stream
 

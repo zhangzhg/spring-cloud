@@ -1,5 +1,9 @@
 package com.cloud.cm.utils;
 
+import com.alibaba.fastjson.JSONArray;
+import com.cloud.cm.domain.BaseModel;
+import org.springframework.util.MultiValueMap;
+
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
@@ -12,13 +16,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.persistence.Column;
-
-import com.cloud.cm.domain.BaseModel;
-import org.springframework.util.MultiValueMap;
-
-import com.alibaba.fastjson.JSONArray;
 
 /**
  * 对象转换处理
@@ -80,7 +77,7 @@ public class BeanUtils {
                 Class clz = descriptor.getPropertyType();
                 if (clz == Date.class) {
                 	if(value instanceof Long) {
-                		value = new Date((Long)value);	
+                		value = new Date((Long)value);
                 	} else if(value instanceof String){
                 		value = new Date(Long.parseLong((String)value));
                 	}
@@ -120,44 +117,6 @@ public class BeanUtils {
                 Method readMethod = descriptor.getReadMethod();
                 Object result = readMethod.invoke(bean);
                 if (result != null) {
-                    returnMap.put(propertyName, result);
-                }
-            }
-        }
-        return returnMap;
-    }
-
-    /**
-     * 将一个对象按其持久化字段转化为Map
-     *
-     * @param bean 要转化的JavaBean 对象
-     * @return 转化为持久化字段的Map
-     */
-    public static Map convertPersistence(Object bean) throws IntrospectionException, InvocationTargetException, IllegalAccessException {
-        Class type = bean.getClass();
-        BeanInfo beanInfo = Introspector.getBeanInfo(type);
-
-        Map<String, Field> fieldMap = new HashMap<>();
-        Class superClass = type;
-        while (superClass != null) {
-            Field[] fields = superClass.getDeclaredFields();
-            for (Field field : fields) {
-                fieldMap.put(field.getName(), field);
-            }
-            superClass = superClass.getSuperclass();
-        }
-        PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
-        Map<String, Object> returnMap = new HashMap<>();
-        for (PropertyDescriptor descriptor : propertyDescriptors) {
-            String propertyName = descriptor.getName();
-            if (!propertyName.equals("class")) {
-                Method readMethod = descriptor.getReadMethod();
-                Object result = readMethod.invoke(bean);
-                if (result != null) {
-                    Field field = fieldMap.get(propertyName);
-                    if (field.isAnnotationPresent(Column.class)) {
-                        propertyName = field.getAnnotation(Column.class).name();
-                    }
                     returnMap.put(propertyName, result);
                 }
             }
