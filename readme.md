@@ -165,3 +165,7 @@ public interface HelloService {
 * 以上所有的熔断功能以及被集成到spring-cloud-starter-netflix-zuul中。
 启动测试：http://localhost:8080//hystrix.stream
 
+### feign client 和 auth2
+* 要权限验证feign有2种方式
+> 1、参数方式验证，在params 里面增加一个access_token
+> 2、Bearer token方式验证，在header 里面增加Authorization值为Bearer空格+access_token
