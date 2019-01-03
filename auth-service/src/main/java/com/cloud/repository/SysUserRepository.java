@@ -1,12 +1,10 @@
 package com.cloud.repository;
 
 import com.cloud.domain.SysUser;
-import com.cloud.repository.support.WiselyRepository;
-import org.springframework.data.jpa.repository.EntityGraph;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.persistence.Entity;
 import java.util.Optional;
 
-public interface SysUserRepository extends WiselyRepository<SysUser,Long> {
+public interface SysUserRepository extends JpaRepository<SysUser,Long> {
     Optional<SysUser> findOneWithRolesByUsername(String username);
 }

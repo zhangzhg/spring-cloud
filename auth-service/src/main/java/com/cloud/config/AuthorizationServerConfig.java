@@ -16,6 +16,9 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 
 import javax.annotation.Resource;
 
+/**
+ *  * 这个是用来验证token的
+ */
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
@@ -31,6 +34,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         return new InMemoryTokenStore();
     }
 
+    //用来配置授权（authorization）以及令牌（token）的访问端点和令牌服务(token services)。
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
@@ -40,6 +44,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .tokenStore(tokenStore());
     }
 
+    //用来配置令牌端点(Token Endpoint)的安全约束
+    // tokenKeyAccess是配置权限:/oauth/token_key
+    // checkTokenAccess是配置权限:/oauth/check_token
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.tokenKeyAccess("permitAll()")
@@ -55,7 +62,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        // client_type=webapp&grant_type=password
+        // http://localhost:8080/uaa/oauth/token?client_type=webapp&grant_type=password&username=zzg&password=admin
         clients.inMemory()
                 .withClient("webapp")
                 // 如果使用 BCryptPasswordEncoder 加密方式，这里一定要这样{bcrypt}+密文。spring固定了。
@@ -64,8 +71,5 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .scopes(SCOPE_READ, SCOPE_WRITE, TRUST)
                 .accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS).
                 refreshTokenValiditySeconds(FREFRESH_TOKEN_VALIDITY_SECONDS);
-//                .and()
-//                .withClient("webapp")
-//                .authorizedGrantTypes("implicit");
     }
 }

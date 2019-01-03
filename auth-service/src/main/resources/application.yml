@@ -35,3 +35,6 @@ ignore:
    - /*/v2/api-docs
    - /swagger/api-docs
    - /webjars/**
+mybatis:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+

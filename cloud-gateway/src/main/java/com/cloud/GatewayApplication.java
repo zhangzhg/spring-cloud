@@ -12,9 +12,9 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 @SpringBootApplication
 @EnableZuulProxy
 @EnableDiscoveryClient
-@EnableJpaRepositories(repositoryBaseClass = SimpleJpaRepository.class)
 @EnableHystrixDashboard
 @EnableCircuitBreaker
+@EnableJpaRepositories(repositoryBaseClass = SimpleJpaRepository.class)
 public class GatewayApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GatewayApplication.class, args);

@@ -103,7 +103,7 @@
     <appender name="DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- 过滤器，只记录DEBUG级别的日志 -->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>DEBUG</level>
+            <level>INFO</level>
             <onMatch>ACCEPT</onMatch>
             <onMismatch>DENY</onMismatch>
         </filter>

@@ -18,7 +18,7 @@ import java.util.Set;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode()
 public class SysUser extends AbstractAuditingEntity{
     @Id
     @GeneratedValue

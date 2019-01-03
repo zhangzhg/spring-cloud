@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
-
 @RestController
 public class HelloController {
     private final Logger logger = LoggerFactory.getLogger(HelloController.class);
@@ -32,6 +30,9 @@ public class HelloController {
         return name;
     }
 
+    /**
+     * 拥有ROLE_USER权限
+     */
     @RequestMapping("/auth")
     @PreAuthorize("hasAuthority('user')")
     public String auth(@RequestParam String name) {

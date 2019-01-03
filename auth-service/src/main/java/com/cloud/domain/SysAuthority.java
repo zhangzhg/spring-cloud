@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode()
 public  class SysAuthority extends AbstractAuditingEntity{
     @Id
     @GeneratedValue
