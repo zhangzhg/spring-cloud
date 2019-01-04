@@ -12,7 +12,7 @@
 		<module>config-server</module>
 		<module>eureka-server</module>
 		<module>cloud-gateway</module>
-		<module>order-service</module>
+		<module>core-service</module>
 		<module>auth-service</module>
 		<module>zipkin-server</module>
 	</modules>
@@ -44,6 +44,8 @@
 		<common.io.version>2.6</common.io.version>
 		<zipkin.version>2.11.12</zipkin.version>
 		<hystrix.version>1.4.6.RELEASE</hystrix.version>
+		<sharding-jdbc.version>2.0.1</sharding-jdbc.version>
+		<hikaricp.version>3.3.0</hikaricp.version>
 	</properties>
 
     <dependencies>
@@ -134,7 +136,27 @@
 				<artifactId>spring-cloud-starter-hystrix</artifactId>
 				<version>${hystrix.version}</version>
 			</dependency>
-
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>1.1.12</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper</artifactId>
+				<version>5.1.8</version>
+			</dependency>
+			<!--HikariCP连接池-->
+			<dependency>
+				<groupId>com.zaxxer</groupId>
+				<artifactId>HikariCP</artifactId>
+				<version>${hikaricp.version}</version>
+			</dependency>
+			<!--<dependency>-->
+				<!--<groupId>io.shardingjdbc</groupId>-->
+				<!--<artifactId>sharding-jdbc-core-spring-boot-starter</artifactId>-->
+				<!--<version>${sharding-jdbc.version}</version>-->
+			<!--</dependency>-->
 		</dependencies>
     </dependencyManagement>
 

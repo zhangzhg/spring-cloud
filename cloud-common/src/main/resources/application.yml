@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    cm:
+      dialect: org.hibernate.dialect.MySQLDialect
+      show-sql: true
+      format-sql: true
+      hibernate-naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      entity-package: com.**.model
+mybatis:
+  mapper-locations: "classpath*:mapper/*.xml"
+  configuration:
+    map-underscore-to-camel-case: true

@@ -27,6 +27,7 @@
         <module name="cloud-gateway" />
         <module name="config-server" />
         <module name="config-server (1)" />
+        <module name="core-service" />
         <module name="eureka-server" />
         <module name="framework.auth" />
         <module name="order-service" />
@@ -49,6 +50,7 @@
       <module name="cloud-gateway" target="1.8" />
       <module name="config-server" target="1.8" />
       <module name="config-server (1)" target="1.8" />
+      <module name="core-service" target="1.8" />
       <module name="eureka-server" target="1.8" />
       <module name="framework-parent" target="1.8" />
       <module name="framework.auth" target="1.5" />
