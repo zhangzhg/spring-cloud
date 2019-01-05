@@ -2,7 +2,6 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
-
 <configuration>
     <settings>
         <setting name="cacheEnabled" value="true"/>
@@ -20,13 +19,11 @@
         <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
         <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
-    <objectFactory type="com.framework.core.support.mybatis.PageObjectFactory">
-    </objectFactory>
-    <objectWrapperFactory type="com.framework.core.support.mybatis.PageObjectWrapperFactory">
-    </objectWrapperFactory>
+    <objectFactory type="com.cloud.cm.interceptor.PageObjectFactory"/>
+    <objectWrapperFactory type="com.cloud.cm.interceptor.PageObjectWrapperFactory"/>
     <plugins>
-        <!-- com.github.pagehelper为PageHelper类所在包名 -->
-        <plugin interceptor="com.github.pagehelper.PageHelper">
+        <!-- com.github.pagehelper为PageInterceptor类所在包名 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
             <!--<property name="dialect" value="mysql"/>-->
             <!-- 该参数默认为false -->
             <!-- 设置为true时，会将RowBounds第一个参数offset当成pageNum页码使用 -->

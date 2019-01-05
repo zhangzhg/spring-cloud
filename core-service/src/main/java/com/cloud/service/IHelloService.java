@@ -1,6 +1,10 @@
 package com.cloud.service;
 
-public interface IHelloService {
+import com.cloud.model.SysUser;
 
+import java.util.List;
+
+public interface IHelloService {
     String hello(String name);
+    List<SysUser> listUser();
 }

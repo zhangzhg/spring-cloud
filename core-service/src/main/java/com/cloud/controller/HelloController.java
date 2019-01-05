@@ -1,14 +1,15 @@
 package com.cloud.controller;
 
 import com.cloud.feign.UserService;
+import com.cloud.model.SysUser;
 import com.cloud.service.IHelloService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class HelloController {
@@ -25,9 +26,9 @@ public class HelloController {
     }
 
     @RequestMapping("/user")
-    public String user() {
-        String name = userService.getHello("测试client");
-        return name;
+    @ResponseBody
+    public List<SysUser> user() {
+        return helloService.listUser();
     }
 
     @RequestMapping("/auth")
