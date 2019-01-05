@@ -1,4 +1,4 @@
-package com.cloud.cm.interceptor;
+package com.cloud.cm.mybatis;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

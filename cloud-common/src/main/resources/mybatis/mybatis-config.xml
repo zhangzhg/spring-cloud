@@ -19,8 +19,8 @@
         <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
         <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
-    <objectFactory type="com.cloud.cm.interceptor.PageObjectFactory"/>
-    <objectWrapperFactory type="com.cloud.cm.interceptor.PageObjectWrapperFactory"/>
+    <objectFactory type="com.cloud.cm.mybatis.PageObjectFactory"/>
+    <objectWrapperFactory type="com.cloud.cm.mybatis.PageObjectWrapperFactory"/>
     <plugins>
         <!-- com.github.pagehelper为PageInterceptor类所在包名 -->
         <plugin interceptor="com.github.pagehelper.PageInterceptor">

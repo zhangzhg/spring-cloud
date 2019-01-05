@@ -23,9 +23,8 @@ public class HelloService implements IHelloService {
 
     @Override
     public List<SysUser> listUser() {
-        //PageRequest pageable = PageRequest.of(1, 1);
-        PageHelper.startPage(1, 1);
-        Page<SysUser> page = sysUserMapper.listUser();
+        PageRequest pageable = PageRequest.of(1, 1);
+        Page<SysUser> page = sysUserMapper.listUser(pageable);
         return page.getContent();
     }
 }

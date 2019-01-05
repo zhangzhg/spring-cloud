@@ -1,4 +1,4 @@
-package com.cloud.cm.interceptor;
+package com.cloud.cm.mybatis;
 
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.ReflectionException;

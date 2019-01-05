@@ -1,4 +1,4 @@
-package com.cloud.cm.interceptor;
+package com.cloud.cm.mybatis;
 
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.reflection.MetaObject;
