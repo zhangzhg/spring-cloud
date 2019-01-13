@@ -98,6 +98,6 @@ public class DynamicRouteLocator extends SimpleRouteLocator implements Refreshab
 
     @Override
     public void refresh() {
-        doRefresh();
+        //doRefresh();
     }
 }

@@ -19,7 +19,7 @@ zuul:
       path: /uaa/**
       sensitiveHeaders:
       serviceId: auth-server
-    order:
+    core:
       path: /core/**
       sensitiveHeaders:
       serviceId: core
