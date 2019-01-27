@@ -19,6 +19,7 @@ public class DynamicRouteLocator extends SimpleRouteLocator implements Refreshab
     private static Logger log = LoggerFactory.getLogger(DynamicRouteLocator.class);
     private ZuulProperties properties;
     private SysZuulRouteRepository sysZuulRouteRepository;
+    private static boolean refresh = true;
 
     public DynamicRouteLocator(String servletPath, ZuulProperties properties, SysZuulRouteRepository zuulRepository) {
         super(servletPath, properties);
@@ -40,8 +41,10 @@ public class DynamicRouteLocator extends SimpleRouteLocator implements Refreshab
         LinkedHashMap<String, ZuulProperties.ZuulRoute> routesMap = new LinkedHashMap<>();
         //读取properties配置、eureka默认配置
         routesMap.putAll(super.locateRoutes());
-        log.debug("初始默认的路由配置完成");
-        routesMap.putAll(locateRoutesFromDb());
+        // 防止一直在刷新数据库配置
+        if (refresh){
+            routesMap.putAll(locateRoutesFromDb());
+        }
         LinkedHashMap<String, ZuulProperties.ZuulRoute> values = new LinkedHashMap<>();
         for (Map.Entry<String, ZuulProperties.ZuulRoute> entry : routesMap.entrySet()) {
             String path = entry.getKey();
@@ -56,6 +59,7 @@ public class DynamicRouteLocator extends SimpleRouteLocator implements Refreshab
             }
             values.put(path, entry.getValue());
         }
+        refresh = false;
         return values;
     }
 
@@ -98,6 +102,7 @@ public class DynamicRouteLocator extends SimpleRouteLocator implements Refreshab
 
     @Override
     public void refresh() {
-        //doRefresh();
+        refresh = true;
+        doRefresh();
     }
 }

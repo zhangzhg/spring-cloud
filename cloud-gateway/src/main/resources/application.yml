@@ -36,11 +36,11 @@ security:
       accessTokenUri: http://localhost:8080/uaa/oauth/token
       userAuthorizationUri: http://localhost:8080/uaa/oauth/authorize
       clientId: webapp
-#      clientSecret: secret
-      registration:
-        uaa:
-          client-id: webapp
-          client-secret: secret
+      clientSecret: secret
+#      registration:
+#        uaa:
+#          client-id: webapp
+#          client-secret: secret
     resource:
       userInfoUri: http://localhost:8080/uaa/user
       preferTokenInfo: false
