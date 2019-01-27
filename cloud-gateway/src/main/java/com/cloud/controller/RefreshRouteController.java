@@ -1,5 +1,6 @@
 package com.cloud.controller;
 
+import com.cloud.config.DynamicRouteLocator;
 import com.cloud.service.IRefreshRouteService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,8 @@ public class RefreshRouteController {
 
     @GetMapping("/refreshRoute")
     @ApiOperation(value="刷新路由", httpMethod="GET", notes="数据路由")
-    private void findById() {
+    private void refreshRoute() {
+        DynamicRouteLocator.refresh = true;
         refreshRouteService.refresh();
     }
 }

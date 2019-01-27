@@ -19,7 +19,7 @@ public class DynamicRouteLocator extends SimpleRouteLocator implements Refreshab
     private static Logger log = LoggerFactory.getLogger(DynamicRouteLocator.class);
     private ZuulProperties properties;
     private SysZuulRouteRepository sysZuulRouteRepository;
-    private static boolean refresh = true;
+    public static boolean refresh = true;
 
     public DynamicRouteLocator(String servletPath, ZuulProperties properties, SysZuulRouteRepository zuulRepository) {
         super(servletPath, properties);
@@ -102,7 +102,6 @@ public class DynamicRouteLocator extends SimpleRouteLocator implements Refreshab
 
     @Override
     public void refresh() {
-        refresh = true;
         doRefresh();
     }
 }
