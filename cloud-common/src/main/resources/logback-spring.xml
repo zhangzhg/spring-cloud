@@ -38,6 +38,8 @@
         </filter>
     </appender>
 
+    <logger name="com.cloud" value="ERROR" />
+
     <!-- Level: FATAL 0  ERROR 3  WARN 4  INFO 6  DEBUG 7 -->
     <root level="INFO">
         <appender-ref ref="console" />

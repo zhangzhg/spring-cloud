@@ -7,4 +7,6 @@ import java.util.List;
 public interface IHelloService {
     String hello(String name);
     List<SysUser> listUser();
+    void saveUser();
+    List<SysUser> listUserPage();
 }

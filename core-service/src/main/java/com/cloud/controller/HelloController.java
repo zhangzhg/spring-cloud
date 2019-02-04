@@ -38,4 +38,16 @@ public class HelloController {
         return helloService.hello(name);
     }
 
+    @RequestMapping("/user/save")
+    @ResponseBody
+    public void saveUser() {
+        helloService.saveUser();
+    }
+
+    @RequestMapping("/users")
+    @ResponseBody
+    public List<SysUser> listUserPage() {
+        return helloService.listUserPage();
+    }
+
 }

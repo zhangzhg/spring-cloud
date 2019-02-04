@@ -65,8 +65,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .redirectUris("https://www.baidu.com/")//这里要配置成动态的
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token")
                 .scopes(SCOPE_READ, SCOPE_WRITE, TRUST)
-                .accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS).
-                refreshTokenValiditySeconds(FREFRESH_TOKEN_VALIDITY_SECONDS)
+                .accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS)
+                .refreshTokenValiditySeconds(FREFRESH_TOKEN_VALIDITY_SECONDS)
                 .and()
                 .withClient("web")
                 .authorizedGrantTypes("implicit");//基于浏览器的应用，简化模式

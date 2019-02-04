@@ -9,6 +9,7 @@ import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -37,6 +38,8 @@ public class MybatisConfig implements TransactionManagementConfigurer {
 
     @Autowired
     private CmJpaProperties cmJpaProperties;
+    @Autowired
+    private JpaProperties jpaProperties;
     @Autowired
     private MybatisProperties mybatisProperties;
 
@@ -74,7 +77,8 @@ public class MybatisConfig implements TransactionManagementConfigurer {
         Properties properties = new Properties();
         properties.setProperty("hibernate.show_sql", cmJpaProperties.getShowSql());
         properties.setProperty("hibernate.format_sql", cmJpaProperties.getFormatSql());
-        properties.setProperty("hibernate.ejb.naming_strategy", cmJpaProperties.getHibernateNamingStrategy());
+        properties.setProperty("hibernate.physical_naming_strategy",
+                jpaProperties.getHibernate().getNaming().getPhysicalStrategy());
         properties.setProperty("hibernate.jdbc.batch_size","50");
         properties.setProperty("hibernate.temp.use_jdbc_metadata_defaults", "false");
         entityManagerFactory.setPackagesToScan(new String[]{cmJpaProperties.getEntityPackage()});

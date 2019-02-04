@@ -9,7 +9,7 @@
     debug:当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。 -->
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
     <!-- 定义日志文件 输入位置 -->
-    <property name="log_dir" value="logs/gate-way" />
+    <property name="log_dir" value="logs/auth-server" />
     <!-- 日志最大的历史 30天 -->
     <property name="maxHistory" value="30"/>
 
@@ -147,7 +147,7 @@
     </logger>
 
     <!-- root级别   DEBUG -->
-    <root level="INFO">
+    <root level="DEBUG">
         <!-- 控制台输出 -->
         <appender-ref ref="STDOUT" />
         <!-- 文件输出 -->

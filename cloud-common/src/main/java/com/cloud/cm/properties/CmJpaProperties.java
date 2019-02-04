@@ -6,13 +6,12 @@ import org.springframework.stereotype.Component;
 /**
  * 数据源JPA配置信息
  */
-@ConfigurationProperties(prefix = "spring.jpa.cm")
+@ConfigurationProperties(prefix = "spring.jpa")
 @Component
 public class CmJpaProperties {
     private String dialect;
     private String showSql;
     private String formatSql;
-    private String hibernateNamingStrategy;
     private String entityPackage;
     private String hibernateEjbInterceptor;
 
@@ -39,14 +38,6 @@ public class CmJpaProperties {
 	public void setFormatSql(String formatSql) {
 		this.formatSql = formatSql;
 	}
-
-	public String getHibernateNamingStrategy() {
-        return hibernateNamingStrategy;
-    }
-
-    public void setHibernateNamingStrategy(String hibernateNamingStrategy) {
-        this.hibernateNamingStrategy = hibernateNamingStrategy;
-    }
 
     public String getEntityPackage() {
         return entityPackage;

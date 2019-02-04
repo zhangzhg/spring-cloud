@@ -1,10 +1,11 @@
 spring:
   jpa:
-    cm:
-      dialect: org.hibernate.dialect.MySQLDialect
+      dialect: org.hibernate.dialect.MySQLInnoDBDialect
       show-sql: true
       format-sql: true
-      hibernate-naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      hibernate:
+        naming:
+          physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
       entity-package: com.**.model
 mybatis:
   mapper-locations: "classpath*:mapper/*.xml"
