@@ -20,7 +20,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/oauth/**")
+                .antMatchers("/oauth/**","/login")
                 .permitAll()
                 .and()
                 .exceptionHandling()

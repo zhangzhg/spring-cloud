@@ -67,6 +67,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .scopes(SCOPE_READ, SCOPE_WRITE, TRUST)
                 .accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS)
                 .refreshTokenValiditySeconds(FREFRESH_TOKEN_VALIDITY_SECONDS)
+                .autoApprove(true)
                 .and()
                 .withClient("web")
                 .authorizedGrantTypes("implicit");//基于浏览器的应用，简化模式

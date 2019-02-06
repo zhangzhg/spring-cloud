@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
 
 /**
  * 这个是spring security的类
@@ -24,12 +23,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/oauth/**")
+                .antMatchers("/oauth/**","/login","/login/**")
                 .permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/oauth/login")
-                .loginProcessingUrl("/oauth/form")
+                .loginPage("/login/page")
+                .loginProcessingUrl("/login")
                 .and().logout().permitAll();
     }
 
@@ -62,11 +61,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         //解决静态资源被拦截的问题
         web.ignoring().antMatchers("/css/**", "/js/**","/static/**","/favicon.ico");
-    }
-
-    @Bean
-    public SecurityEvaluationContextExtension securityEvaluationContextExtension() {
-        return new SecurityEvaluationContextExtension();
     }
 
     /**

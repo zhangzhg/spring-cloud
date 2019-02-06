@@ -16,11 +16,12 @@
 
   <body>
     <div class="container form-margin-top">
-      <form class="form-signin" action="/oauth/form" method="post">
+      <form class="form-signin" action="/login" method="post">
         <h2 class="form-signin-heading" align="center">统一认证系统</h2>
         <input type="text" name="username" class="form-control form-margin-top" placeholder="用户名" required autofocus>
         <input type="password" name="password" class="form-control" placeholder="密码" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
       </form>
     </div>
     <footer>

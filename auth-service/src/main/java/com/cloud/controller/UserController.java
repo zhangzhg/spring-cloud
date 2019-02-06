@@ -25,13 +25,8 @@ public class UserController {
      * 认证页面
      * @return ModelAndView
      */
-    @GetMapping("/oauth/login")
+    @GetMapping("/login/page")
     public ModelAndView loginPage() {
         return new ModelAndView("/ftl/login");
-    }
-
-    @PostMapping("/oauth/form")
-    public void form() {
-
     }
 }

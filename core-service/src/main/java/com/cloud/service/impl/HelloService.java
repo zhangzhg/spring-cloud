@@ -41,6 +41,7 @@ public class HelloService implements IHelloService {
         String hashPass = encode.encode("test");
         user.setPassword(hashPass);
         sysUserRepository.save(user);
+        throw new RuntimeException("xxx");
     }
 
     public List<SysUser> listUserPage() {
