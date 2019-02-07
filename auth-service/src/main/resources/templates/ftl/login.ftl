@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +21,9 @@
         <input type="text" name="username" class="form-control form-margin-top" placeholder="用户名" required autofocus>
         <input type="password" name="password" class="form-control" placeholder="密码" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <#if param>
+        <p style="color: red">用户名或密码错误</p>
+        </#if>
       </form>
     </div>
     <footer>

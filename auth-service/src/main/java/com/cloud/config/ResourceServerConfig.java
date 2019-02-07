@@ -10,6 +10,11 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 用来判断用户是否有资源权限
+ * that the ResourceServerConfigurerAdapter uses a special filter
+ * that checks for the bearer token in the request to authenticate the request via OAuth2.
+ */
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
@@ -20,16 +25,16 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/oauth/**","/login")
+                .antMatchers("/oauth/**")
                 .permitAll()
                 .and()
+                .formLogin()
+                .permitAll()
+                .and()
+                .logout().permitAll()
+                .and()
                 .exceptionHandling()
-                .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
-                .and()
-                .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
+                .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED));
     }
 
     @Override

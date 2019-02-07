@@ -14,8 +14,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
-import javax.annotation.Resource;
-
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
@@ -38,6 +36,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .userDetailsService(userDetailsService)
                 .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
                 .tokenStore(tokenStore());
+        //endpoints.pathMapping("/oauth/confirm_access","/login/confirm_access");
     }
 
     @Override
@@ -62,12 +61,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 // authorization_code方式，访问授权获取code，根据code和分配的授权码得到assess_token
                 // passwordEncoder.encode("secret")
                 .secret("{bcrypt}$2a$10$1agp7vJOGqTvIRtkmABgteLtKEX3f1SP9A9R2ADVud5.OkIxQSEUS")
-                .redirectUris("https://www.baidu.com/")//这里要配置成动态的
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token")
                 .scopes(SCOPE_READ, SCOPE_WRITE, TRUST)
                 .accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS)
                 .refreshTokenValiditySeconds(FREFRESH_TOKEN_VALIDITY_SECONDS)
                 .autoApprove(true)
+                .redirectUris("http://localhost:8080/uaa/login/main")
                 .and()
                 .withClient("web")
                 .authorizedGrantTypes("implicit");//基于浏览器的应用，简化模式
