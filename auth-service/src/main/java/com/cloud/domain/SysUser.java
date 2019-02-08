@@ -67,7 +67,7 @@ public class SysUser extends AbstractAuditingEntity{
         Set<GrantedAuthority> userAuthotities = new HashSet<>();
         for(SysRole role : this.roles){
             for(SysAuthority authority : role.getAuthorities()){
-                userAuthotities.add(new SimpleGrantedAuthority(authority.getValue()));
+                userAuthotities.add(new SimpleGrantedAuthority(authority.getName()));
             }
         }
 
