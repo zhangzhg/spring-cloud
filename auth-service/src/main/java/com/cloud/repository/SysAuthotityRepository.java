@@ -1,7 +1,7 @@
 package com.cloud.repository;
 
-import com.cloud.domain.SysAuthority;
-import com.cloud.repository.support.WiselyRepository;
+import com.cloud.model.SysAuthority;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SysAuthotityRepository extends WiselyRepository<SysAuthority,Long> {
+public interface SysAuthotityRepository extends JpaRepository<SysAuthority,Long> {
 }

@@ -1,24 +1,14 @@
-package com.cloud.domain;
+package com.cloud.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.BatchSize;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@Table
 public class SysUser extends AbstractAuditingEntity{
     @Id
     @GeneratedValue
@@ -52,27 +42,6 @@ public class SysUser extends AbstractAuditingEntity{
     @Size(max = 256)
     @Column(name = "image_url", length = 256)
     private String imageUrl;
-
-
-    @JsonIgnore
-    @ManyToMany(targetEntity = SysRole.class,fetch = FetchType.EAGER)
-    @BatchSize(size = 20)
-    private Set<SysRole> roles = new HashSet<>();
-
-    @Transient
-    private Set<GrantedAuthority> authorities = new HashSet<>();
-
-
-    public Set<GrantedAuthority> getAuthorities() {
-        Set<GrantedAuthority> userAuthotities = new HashSet<>();
-        for(SysRole role : this.roles){
-            for(SysAuthority authority : role.getAuthorities()){
-                userAuthotities.add(new SimpleGrantedAuthority(authority.getName()));
-            }
-        }
-
-        return userAuthotities;
-    }
 
     public Long getId() {
         return id;

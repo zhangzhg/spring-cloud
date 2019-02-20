@@ -1,4 +1,4 @@
-package com.cloud.domain;
+package com.cloud.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.envers.Audited;

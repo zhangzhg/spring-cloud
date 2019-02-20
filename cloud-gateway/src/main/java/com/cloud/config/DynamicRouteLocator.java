@@ -1,6 +1,6 @@
 package com.cloud.config;
 
-import com.cloud.domain.SysZuulRoute;
+import com.cloud.model.SysZuulRoute;
 import com.cloud.repository.SysZuulRouteRepository;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;

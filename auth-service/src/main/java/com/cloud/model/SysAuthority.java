@@ -1,15 +1,15 @@
-package com.cloud.domain;
+package com.cloud.model;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Data
-@EqualsAndHashCode(callSuper = false)
+@Table
 public  class SysAuthority extends AbstractAuditingEntity{
     @Id
     @GeneratedValue

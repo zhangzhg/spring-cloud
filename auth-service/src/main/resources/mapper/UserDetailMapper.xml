@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.mapper.UserDetailMapper">
+    <select id="listAuthority" resultType="com.cloud.model.SysAuthority">
+        select * from sys_authority a
+        join sys_role_authorities ra on a.id = ra.authorities_id
+        join sys_user_roles ur on ur.roles_id = ra.sys_role_id
+        join sys_user u on u.id = ur.sys_user_id
+        where u.username = #{userName}
+    </select>
+</mapper>

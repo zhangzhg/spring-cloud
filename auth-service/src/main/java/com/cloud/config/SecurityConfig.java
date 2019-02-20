@@ -2,8 +2,10 @@ package com.cloud.config;
 
 import com.cloud.security.DomainUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,6 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  * (form login in the case of your given examples).
  */
 @Configuration
+@Order(SecurityProperties.IGNORED_ORDER)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DomainUserDetailsService userDetailsService;

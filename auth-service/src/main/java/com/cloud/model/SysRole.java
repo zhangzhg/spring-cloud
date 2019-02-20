@@ -1,8 +1,7 @@
-package com.cloud.domain;
+package com.cloud.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
@@ -11,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @Data
-@EqualsAndHashCode(callSuper = false)
+@Table
 public class SysRole extends AbstractAuditingEntity{
     private static final long serialVersionUID = 1L;
     @Id

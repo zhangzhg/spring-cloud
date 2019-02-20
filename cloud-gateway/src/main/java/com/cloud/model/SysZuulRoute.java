@@ -15,7 +15,7 @@
  * Author: lengleng (wangiegie@gmail.com)
  */
 
-package com.cloud.domain;
+package com.cloud.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
