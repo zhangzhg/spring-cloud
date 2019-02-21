@@ -1,9 +1,7 @@
 package com.cloud.config;
 
 import com.cloud.handler.DomainAccessDeniedHandler;
-import com.cloud.handler.LoginSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -38,7 +36,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .loginPage("/login/page")
                 .loginProcessingUrl("/login")
                 .failureUrl("/login/page?error=true")
-                .successHandler(successHandler())
                 .permitAll()
                 .and()
                 .logout().permitAll()
@@ -46,10 +43,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .exceptionHandling()
                 .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
                 .and().httpBasic();
-    }
-
-    private AuthenticationSuccessHandler successHandler() {
-        return new LoginSuccessHandler();
     }
 
     @Override
