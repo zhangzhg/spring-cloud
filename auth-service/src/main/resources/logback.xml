@@ -142,12 +142,13 @@
     <!--<logger name="com.ibatis.common.jdbc.SimpleDataSource" value="DEBUG" />-->
     <!--<logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/>-->
     <!--<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG" />-->
+    <logger name="org.springframework.security.web" value="DEBUG" />
     <logger name="com.cloud" level="DEBUG" additivity="true">
         <appender-ref ref="STDOUT"/>
     </logger>
 
     <!-- root级别   DEBUG -->
-    <root level="DEBUG">
+    <root level="INFO">
         <!-- 控制台输出 -->
         <appender-ref ref="STDOUT" />
         <!-- 文件输出 -->

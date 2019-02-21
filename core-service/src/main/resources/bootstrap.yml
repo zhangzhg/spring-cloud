@@ -21,7 +21,7 @@ management:
 security:
   oauth2:
     resource:
-      id: order
+      id: auth-server
       user-info-uri: http://localhost:8080/uaa/user
       prefer-token-info: false
 

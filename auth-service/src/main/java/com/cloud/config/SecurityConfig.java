@@ -2,7 +2,6 @@ package com.cloud.config;
 
 import com.cloud.security.DomainUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -15,12 +14,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
- * 这个是spring security的类,用来判断用户是否登录
+ * 这个是spring security的类,用来判断用户是否登录，
  * The WebSecurityConfigurerAdapter is used to authenticate the user via a session
  * (form login in the case of your given examples).
  */
 @Configuration
-@Order(SecurityProperties.IGNORED_ORDER)
+@Order(2)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DomainUserDetailsService userDetailsService;
@@ -37,8 +36,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login/page?error=true")
                 .permitAll()
                 .and().logout().permitAll()
-                .and().csrf().disable();
+                .and().csrf().disable()
+                .httpBasic();
     }
+
 
     /**
      * 用户验证
