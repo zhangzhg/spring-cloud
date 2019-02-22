@@ -29,9 +29,11 @@ public class UserController {
      * 认证页面
      * @return ModelAndView
      */
-    @RequestMapping("/login")
-    public String loginPage() {
-        return "ftl/login";
+    @RequestMapping("/login/page")
+    public ModelAndView loginPage(boolean error) {
+        ModelAndView mv = new ModelAndView("/ftl/login");
+        mv.addObject("param", error);
+        return mv;
     }
 
     @RequestMapping("/login/confirm_access")

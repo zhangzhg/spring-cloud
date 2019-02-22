@@ -21,7 +21,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  */
 @Configuration
 @Order(2)
-@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DomainUserDetailsService userDetailsService;
@@ -33,7 +32,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/login/page")
+                .loginProcessingUrl("/login")
+                .failureUrl("/login/page?error=true")
                 .permitAll()
                 .and().logout().permitAll()
                 .and().csrf().disable()
