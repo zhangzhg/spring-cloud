@@ -177,3 +177,6 @@ public interface HelloService {
 > 1、参数方式验证，在params 里面增加一个access_token
 > 2、Bearer token方式验证，在header 里面增加Authorization值为Bearer空格+access_token
 * 返回结果必须为可序列化对象，否则报错。
+
+### 错误响应
+* @RequestMapping("/oauth/error")

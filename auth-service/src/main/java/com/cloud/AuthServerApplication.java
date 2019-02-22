@@ -18,6 +18,7 @@ import java.util.Optional;
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
 @EnableJpaRepositories(repositoryBaseClass = SimpleJpaRepository.class)
 @EntityScan("com.cloud.domain")
+//@EnableRedisHttpSession
 public class AuthServerApplication {
 
 	@Bean(name = "auditorAware")

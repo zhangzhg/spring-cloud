@@ -25,6 +25,8 @@ zuul:
       serviceId: core
   add-proxy-headers: true
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     registerWithEureka: false
     serviceUrl:
@@ -35,12 +37,8 @@ security:
     client:
       accessTokenUri: http://localhost:8080/uaa/oauth/token
       userAuthorizationUri: http://localhost:8080/uaa/oauth/authorize
-      clientId: webapp
+      clientId: gateway
       clientSecret: secret
-#      registration:
-#        uaa:
-#          client-id: webapp
-#          client-secret: secret
     resource:
       userInfoUri: http://localhost:8080/uaa/user
       preferTokenInfo: false
