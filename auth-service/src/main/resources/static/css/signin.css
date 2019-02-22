@@ -29,6 +29,9 @@ body {
 .form-margin-top {
   margin-top: 50px;
 }
+.margin-top-10 {
+  margin-top: 10px;
+}
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 10px;
