@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Configuration
 @EnableResourceServer
-@Order(6)
+//@Order(6)
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Autowired
     DomainAccessDeniedHandler domainAccessDeniedHandler;
@@ -27,6 +27,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
                 .authorizeRequests()
                 .antMatchers("/oauth/**","/login/**", "/logout")
                 .permitAll()

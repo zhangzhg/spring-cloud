@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 public class LoginController {
     private final Logger logger = LoggerFactory.getLogger(LoginController.class);
-
-    @RequestMapping("/login")
-    @ResponseBody
-    public String index(HttpServletRequest request, HttpServletResponse response, @RequestParam String code) {
-        logger.info("request one  name is "+code);
-        return code;
-    }
+//
+//    @RequestMapping("/login")
+//    @ResponseBody
+//    public String index(HttpServletRequest request, HttpServletResponse response, @RequestParam String code) {
+//        logger.info("request one  name is "+code);
+//        return code;
+//    }
 }
